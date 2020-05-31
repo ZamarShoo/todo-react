@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
+import {Field, reduxForm} from "redux-form";
+import {addCheckBox, checkedPost, deleteCheck, updateHeading} from "../../redux/todo-reducer";
 import {connect} from "react-redux";
-import { addCheckBox, checkedPost, deleteCheck, updateHeading } from "../../redux/todo-reducer";
-import {Field, reduxForm} from "redux-form";y
 
 const ElementForm = (props) => {
 
@@ -9,7 +9,7 @@ const ElementForm = (props) => {
         return (
             <form onSubmit={props.handleSubmit}>
                 {
-                    props.items.checkboxes.map ( c => {
+                    props.checkboxes.map ( c => {
 
                         return (
                             <div>
@@ -17,17 +17,13 @@ const ElementForm = (props) => {
                                        type='checkbox'
                                        name={`${ c.id }`}
                                        id={`${ c.id }`}
-                                       onChange={() => props.checkedPost(c.id)}/>
+                                       onChange={() => props.checkedNewPost(c.id)}/>
                                 <label htmlFor={`${c.id}`}>{ c.message }</label>
                                 <div onClick={() => props.deleteThisCheck(c.id)}>Delete</div>
                             </div>
                         )
                     })
                 }
-                {!props.inputTextarea &&
-                    <div onDoubleClick={ props.activateEditTextarea }>Add new Checkbox</div>
-                }
-                {props.inputTextarea &&
                 <div autoFocus={true}
                      onBlur={ props.deactivateEditTextarea }>
                     <Field component='textarea'
@@ -35,17 +31,14 @@ const ElementForm = (props) => {
                            name='newCheckboxText' />
                     <button>Send</button>
                 </div>
-                }
             </form>
         )
 }
 
-let ElementReduxForm = reduxForm({form: 'checkboxesAddForm'})(ElementForm)
-
 class Element extends React.Component {
     state = {
         editHeading: false,
-        heading: this.props.items.heading,
+        heading: this.props.item.heading,
         editTextarea: false
     }
 
@@ -59,7 +52,8 @@ class Element extends React.Component {
         this.setState({
             editHeading: false
         });
-        this.props.updateHeading(this.state.heading);
+        debugger
+        this.props.updateHeading(this.state.heading, this.props.item.id);
     }
 
     activateEditTextarea = () => {
@@ -76,9 +70,9 @@ class Element extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-        if (prevProps.items.heading !== this.props.items.heading) {
+        if (prevProps.item.heading !== this.props.item.heading) {
             this.setState({
-                heading: this.props.items.heading
+                heading: this.props.item.heading
             });
         }
     }
@@ -90,23 +84,28 @@ class Element extends React.Component {
     }
 
     addNewCheckbox = (values) => {
-        this.props.addCheckBox(values.newCheckboxText)
+        console.log(`${this.props.item.id} --- ${values.newCheckboxText}`)
+        this.props.addCheckBox(this.props.item.id, values.newCheckboxText)
     }
 
     checkedNewPost = (id) => {
-        this.props.checkedPost(id)
+        this.props.checkedPost(this.props.item.id, id)
     }
 
     deleteThisCheck = (id) => {
-        this.props.deleteCheck(id)
+        this.props.deleteCheck(this.props.item.id, id)
     }
 
     render() {
 
+        let ElementReduxForm = reduxForm({form: `form_${this.props.item.id}`})(ElementForm)
+
+        const { heading, checkboxes } = this.props.item
+
         return (
             <Fragment>
                 {!this.state.editHeading &&
-                    <h2 onDoubleClick={ this.activateEditHeading}>{this.props.items.heading}</h2>
+                    <h2 onDoubleClick={ this.activateEditHeading}>{heading}</h2>
                 }
                 {this.state.editHeading &&
                     <div>
@@ -118,8 +117,8 @@ class Element extends React.Component {
                 }
                 <hr />
                 <ElementReduxForm deleteThisCheck={this.deleteThisCheck}
-                                  checkedPost={this.checkedNewPost}
-                                  items={this.props.items}
+                                  checkedNewPost={this.checkedNewPost}
+                                  checkboxes={checkboxes}
                                   onSubmit={ this.addNewCheckbox }
                                   activateEditTextarea={this.activateEditTextarea}
                                   deactivateEditTextarea={this.deactivateEditTextarea}
@@ -129,9 +128,5 @@ class Element extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    items: state.todo.items
-})
 
-
-export default connect(mapStateToProps, { addCheckBox, checkedPost, deleteCheck, updateHeading } )(Element)
+export default connect(null,{addCheckBox, checkedPost, deleteCheck, updateHeading})(Element)
