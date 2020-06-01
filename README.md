@@ -4,7 +4,7 @@
 * react-dom
 * react-redux
 * react-scripts
-* redux"
+* redux
 * redux-form
 * redux-thunk
 
