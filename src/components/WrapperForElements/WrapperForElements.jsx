@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react'
 import Element from "../element/Element";
 import {connect} from "react-redux";
+import {addItem} from "../../redux/todo-reducer";
 
 const WrapperForElements = (props) => {
 
@@ -11,6 +12,7 @@ const WrapperForElements = (props) => {
                     return <Element item={item} />
                 })
             }
+            <button onClick={props.addItem}>Добавить новый элемент</button>
         </Fragment>
     )
 }
@@ -21,4 +23,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, {})(WrapperForElements)
+export default connect(mapStateToProps, {addItem})(WrapperForElements)

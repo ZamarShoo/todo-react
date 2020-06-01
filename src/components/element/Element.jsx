@@ -1,6 +1,6 @@
 import React, {Fragment} from "react";
 import {Field, reduxForm} from "redux-form";
-import {addCheckBox, checkedPost, deleteCheck, updateHeading} from "../../redux/todo-reducer";
+import {addCheckBox, checkedPost, deleteCheck, deleteItem, updateHeading} from "../../redux/todo-reducer";
 import {connect} from "react-redux";
 
 const ElementForm = (props) => {
@@ -24,8 +24,7 @@ const ElementForm = (props) => {
                         )
                     })
                 }
-                <div autoFocus={true}
-                     onBlur={ props.deactivateEditTextarea }>
+                <div autoFocus={true}>
                     <Field component='textarea'
                            placeholder='Enter your message'
                            name='newCheckboxText' />
@@ -52,7 +51,6 @@ class Element extends React.Component {
         this.setState({
             editHeading: false
         });
-        debugger
         this.props.updateHeading(this.state.heading, this.props.item.id);
     }
 
@@ -84,7 +82,6 @@ class Element extends React.Component {
     }
 
     addNewCheckbox = (values) => {
-        console.log(`${this.props.item.id} --- ${values.newCheckboxText}`)
         this.props.addCheckBox(this.props.item.id, values.newCheckboxText)
     }
 
@@ -96,14 +93,19 @@ class Element extends React.Component {
         this.props.deleteCheck(this.props.item.id, id)
     }
 
+    deleteElem = (id) => {
+        this.props.deleteItem(id)
+    }
+
     render() {
 
         let ElementReduxForm = reduxForm({form: `form_${this.props.item.id}`})(ElementForm)
 
-        const { heading, checkboxes } = this.props.item
+        const { id, heading, checkboxes } = this.props.item
 
         return (
             <Fragment>
+                <div onClick={() => this.deleteElem(id)}>Удалить элемент</div>
                 {!this.state.editHeading &&
                     <h2 onDoubleClick={ this.activateEditHeading}>{heading}</h2>
                 }
@@ -129,4 +131,4 @@ class Element extends React.Component {
 }
 
 
-export default connect(null,{addCheckBox, checkedPost, deleteCheck, updateHeading})(Element)
+export default connect(null,{addCheckBox, checkedPost, deleteCheck, updateHeading, deleteItem})(Element)
