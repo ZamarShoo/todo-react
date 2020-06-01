@@ -3,7 +3,6 @@
 * react
 * react-dom
 * react-redux
-* react-scripts
 * redux
 * redux-form
 * redux-thunk
