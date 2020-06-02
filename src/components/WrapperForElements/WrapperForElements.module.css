@@ -1,0 +1,36 @@
+.wrapper {
+    position: relative;
+    width: 80vw;
+    display: -webkit-box;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.newElem {
+    position: fixed;
+    top: 40px;
+    left: 60px;
+    outline: none;
+    border: none;
+    background-color: white;
+}
+
+.newElem img {
+    cursor: pointer;
+    transform: rotate(45deg);
+    opacity: 0.6;
+    color: gray;
+}
+
+.newElem::before {
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgba(10, 24, 77, 0.5);
+    margin-top: -4px;
+    margin-left: -4px;
+}

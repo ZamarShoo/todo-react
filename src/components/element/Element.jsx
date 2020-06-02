@@ -1,10 +1,11 @@
-import React, {Fragment} from "react";
+import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {addCheckBox, checkedPost, deleteCheck, deleteItem, updateHeading} from "../../redux/todo-reducer";
 import {connect} from "react-redux";
+import s from './element.module.css'
+import DeleteImage from "../../common/delete";
 
 const ElementForm = (props) => {
-
 
         return (
             <form onSubmit={props.handleSubmit}>
@@ -12,19 +13,21 @@ const ElementForm = (props) => {
                     props.checkboxes.map ( c => {
 
                         return (
-                            <div>
+                            <div className={s.checkBox_item} key={c.id}>
                                 <Field component='input'
                                        type='checkbox'
                                        name={`${ c.id }`}
                                        id={`${ c.id }`}
-                                       onChange={() => props.checkedNewPost(c.id)}/>
-                                <label htmlFor={`${c.id}`}>{ c.message }</label>
-                                <div onClick={() => props.deleteThisCheck(c.id)}>Delete</div>
+                                       onChange={() => props.checkedNewPost(c.id)} />
+                                <label className={`${(
+                                    c.active ? s.checkBox_item_checked : null
+                                )}`}>{ c.message }</label>
+                                <div className={s.checkBox_delete} onClick={() => props.deleteThisCheck(c.id)}><DeleteImage/></div>
                             </div>
                         )
                     })
                 }
-                <div autoFocus={true}>
+                <div className={s.textareaDiv} autoFocus={true}>
                     <Field component='textarea'
                            placeholder='Enter your message'
                            name='newCheckboxText' />
@@ -37,8 +40,7 @@ const ElementForm = (props) => {
 class Element extends React.Component {
     state = {
         editHeading: false,
-        heading: this.props.item.heading,
-        editTextarea: false
+        heading: this.props.item.heading
     }
 
     activateEditHeading = () => {
@@ -52,18 +54,6 @@ class Element extends React.Component {
             editHeading: false
         });
         this.props.updateHeading(this.state.heading, this.props.item.id);
-    }
-
-    activateEditTextarea = () => {
-        this.setState({
-            editTextarea: true
-        });
-    }
-
-    deactivateEditTextarea = () => {
-        this.setState({
-            editTextarea: false
-        });
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -104,8 +94,8 @@ class Element extends React.Component {
         const { id, heading, checkboxes } = this.props.item
 
         return (
-            <Fragment>
-                <div onClick={() => this.deleteElem(id)}>Удалить элемент</div>
+            <div className={s.item}>
+                <div className={s.delete} onClick={() => this.deleteElem(id)}><DeleteImage/></div>
                 {!this.state.editHeading &&
                     <h2 onDoubleClick={ this.activateEditHeading}>{heading}</h2>
                 }
@@ -114,18 +104,16 @@ class Element extends React.Component {
                         <input onChange={this.onStatusChange}
                                autoFocus={true}
                                onBlur={this.deactivateEditHeading}
-                               value={this.state.heading}/>
+                               value={this.state.heading}
+                        type={'text'}/>
                     </div>
                 }
                 <hr />
                 <ElementReduxForm deleteThisCheck={this.deleteThisCheck}
                                   checkedNewPost={this.checkedNewPost}
                                   checkboxes={checkboxes}
-                                  onSubmit={ this.addNewCheckbox }
-                                  activateEditTextarea={this.activateEditTextarea}
-                                  deactivateEditTextarea={this.deactivateEditTextarea}
-                                  inputTextarea={this.state.editTextarea} />
-            </Fragment>
+                                  onSubmit={ this.addNewCheckbox } />
+            </div>
         )
     }
 }

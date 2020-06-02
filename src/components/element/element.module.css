@@ -1,0 +1,85 @@
+.item {
+    position: relative;
+    width: 500px;
+    height: auto;
+    box-shadow: 0px 10px 60px rgba(10, 24, 77, 0.25);
+    border-radius: 10px;
+    margin: 35px;
+    padding: 35px 25px 55px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    opacity: .8;
+    font-size: 23px;
+}
+
+hr {
+    height: 2px;
+    border-radius: 2px;
+    background-color: rgba(10, 24, 77, 0.25);
+    border: none;
+}
+
+input[type='text'] {
+    height: 38px;
+    outline: none;
+    border: 2px solid rgba(10, 24, 77, 0.25);
+    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    opacity: .8;
+    padding: 5px 10px;
+    font-size: 23px;
+    margin-top: 9px;
+    margin-left: -12px;
+    margin-bottom: 1px;
+}
+
+.textareaDiv {
+    margin-right: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 65px;
+    outline: none;
+    border: 2px solid rgba(10, 24, 77, 0.25);
+    border-radius: 10px;
+    padding: 5px 10px;
+    resize: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.delete {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    opacity: 0.25;
+    cursor: pointer;
+}
+
+.checkBox_delete {
+    opacity: 0.25;
+    width: 20px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    top: 2px;
+}
+
+.checkBox_item {
+    position: relative;
+    width: 100%;
+    display: -webkit-box;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    margin: 15px 0;
+}
+
+.checkBox_item_checked {
+    text-decoration: line-through;
+}
