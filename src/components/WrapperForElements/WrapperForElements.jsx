@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import Element from "../element/Element";
 import {connect} from "react-redux";
 import {addItem} from "../../redux/todo-reducer";

@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91af1874-33c5-44d6-8514-ae5a6a4883fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/common/delete.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/WrapperForElements/WrapperForElements.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/element/element.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/delete-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/element/ElementForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/WrapperForElements/WrapperForElements.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WrapperForElements/WrapperForElements.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WrapperForElements/WrapperForElements.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WrapperForElements/WrapperForElements.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/element/Element.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/element/Element.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/element/element.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/element/element.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/todo-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/todo-reducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,7 +80,7 @@
       <workItem from="1590833529957" duration="4076000" />
       <workItem from="1590932412581" duration="7396000" />
       <workItem from="1591008887308" duration="2634000" />
-      <workItem from="1591100974904" duration="10324000" />
+      <workItem from="1591100974904" duration="14085000" />
     </task>
     <servers />
   </component>

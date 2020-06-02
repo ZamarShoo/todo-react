@@ -9,24 +9,8 @@ let initialState = {
     items: [
         {
             id: 0,
-            heading: 'Задания на сегодня',
-            checkboxes: [
-                {id: 0, message: 'Встать рано утром', active: false},
-                {id: 1, message: 'Скушать вкусный завтрак', active: false},
-                {id: 2, message: 'Провести тренировку', active: false},
-                {id: 3, message: 'Поработать', active: false},
-                {id: 4, message: 'Встретиться с друзьями', active: false}
-            ]
-        },{
-            id: 1,
-            heading: 'Задания на завтра',
-            checkboxes: [
-                {id: 0, message: 'Встать завтра рано утром', active: false},
-                {id: 1, message: 'Скушать завтра вкусный завтрак', active: false},
-                {id: 2, message: 'Провести завтра тренировку', active: false},
-                {id: 3, message: 'Поработать завтра', active: false},
-                {id: 4, message: 'Встретиться завтра с друзьями', active: false}
-            ]
+            heading: 'New Item',
+            checkboxes: []
         }
     ]
 }
@@ -38,7 +22,7 @@ const todoReducer = (state = initialState, action) => {
         case ADD_ITEM: {
             return {
                 items: [...state.items,
-                    { id: state.items.length, heading: 'Новый элемент', checkboxes: [] }]
+                    { id: state.items.length, heading: 'New Item', checkboxes: [] }]
             }
         }
 
@@ -63,7 +47,6 @@ const todoReducer = (state = initialState, action) => {
         }
 
         case CHECKED_POST: {
-            debugger
             return {
                 items: state.items.map(n => n.id === action.payload.item
                 ? { ...n,

@@ -1,41 +1,11 @@
 import React from "react";
-import {Field, reduxForm} from "redux-form";
+import {reduxForm} from "redux-form";
 import {addCheckBox, checkedPost, deleteCheck, deleteItem, updateHeading} from "../../redux/todo-reducer";
 import {connect} from "react-redux";
 import s from './element.module.css'
 import DeleteImage from "../../common/delete";
+import ElementForm from "./ElementForm";
 
-const ElementForm = (props) => {
-
-        return (
-            <form onSubmit={props.handleSubmit}>
-                {
-                    props.checkboxes.map ( c => {
-
-                        return (
-                            <div className={s.checkBox_item} key={c.id}>
-                                <Field component='input'
-                                       type='checkbox'
-                                       name={`${ c.id }`}
-                                       id={`${ c.id }`}
-                                       onChange={() => props.checkedNewPost(c.id)} />
-                                <label className={`${(
-                                    c.active ? s.checkBox_item_checked : null
-                                )}`}>{ c.message }</label>
-                                <div className={s.checkBox_delete} onClick={() => props.deleteThisCheck(c.id)}><DeleteImage/></div>
-                            </div>
-                        )
-                    })
-                }
-                <div className={s.textareaDiv} autoFocus={true}>
-                    <Field component='textarea'
-                           placeholder='Enter your message'
-                           name='newCheckboxText' />
-                    <button>Send</button>
-                </div>
-            </form>
-        )
-}
 
 class Element extends React.Component {
     state = {
@@ -112,7 +82,8 @@ class Element extends React.Component {
                 <ElementReduxForm deleteThisCheck={this.deleteThisCheck}
                                   checkedNewPost={this.checkedNewPost}
                                   checkboxes={checkboxes}
-                                  onSubmit={ this.addNewCheckbox } />
+                                  onSubmit={ this.addNewCheckbox }
+                                  itemId={this.props.item.id}/>
             </div>
         )
     }
