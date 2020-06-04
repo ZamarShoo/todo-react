@@ -4,7 +4,7 @@
     height: auto;
     box-shadow: 0px 10px 60px rgba(10, 24, 77, 0.25);
     border-radius: 10px;
-    margin: 35px;
+    margin: 25px;
     padding: 35px 25px;
     font-family: 'Open Sans', sans-serif;
 }
@@ -122,4 +122,58 @@ textarea {
     color: #282c34;
     margin-top: 20px;
     cursor: pointer;
+}
+
+.darkStyleFont {
+    color: lightgray;
+}
+
+.darkElem {
+    background-color: #111;
+    box-shadow: none;
+}
+
+.darkElem h2 {
+    color: lavender;
+}
+
+.darkElem hr {
+    background-color: #333;
+}
+
+.darkElem .delete {
+    opacity: 1;
+}
+
+.darkElem .textareaButton {
+    background-color: #222;
+    color: lavender;
+}
+
+.darkElem textarea {
+    background-color: #222;
+    color: lavender;
+    border-color: #333;
+}
+
+.darkElem h2:hover {
+    background-color: #333;
+}
+
+.darkElem input[type='text'] {
+    border: 2px solid #333;
+    color: lavender;
+    background-color: #222;
+}
+
+.darkElem .checkBox_delete {
+    opacity: 1;
+}
+
+.darkElem label {
+    color: lavender;
+}
+
+.darkElem label:hover {
+    background-color: #333;
 }

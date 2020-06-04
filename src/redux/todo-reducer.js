@@ -1,9 +1,10 @@
-const ADD_CHECKBOX = 'ADD_CHECKBOX'
-const CHECKED_POST = 'CHECKED_POST'
-const DELETE_CHECKBOX = 'DELETE_CHECKBOX'
-const UPDATE_HEADING = 'UPDATE_HEADING'
-const ADD_ITEM = 'ADD_ITEM'
-const DELETE_ITEM = 'DELETE_ITEM'
+const ADD_CHECKBOX = 'ADD_CHECKBOX';
+const CHECKED_POST = 'CHECKED_POST';
+const DELETE_CHECKBOX = 'DELETE_CHECKBOX';
+const UPDATE_HEADING = 'UPDATE_HEADING';
+const ADD_ITEM = 'ADD_ITEM';
+const DELETE_ITEM = 'DELETE_ITEM';
+const CHANGE_COLOR = 'CHANGE_COLOR'
 
 let initialState = {
     items: [
@@ -12,8 +13,9 @@ let initialState = {
             heading: 'New Item',
             checkboxes: []
         }
-    ]
-}
+    ],
+    darkColor: false
+};
 
 const todoReducer = (state = initialState, action) => {
 
@@ -21,6 +23,7 @@ const todoReducer = (state = initialState, action) => {
 
         case ADD_ITEM: {
             return {
+                ...state,
                 items: [...state.items,
                     { id: state.items.length, heading: 'New Item', checkboxes: [] }]
             }
@@ -28,12 +31,14 @@ const todoReducer = (state = initialState, action) => {
 
         case DELETE_ITEM: {
             return {
+                ...state,
                 items: state.items.filter(n => n.id !== action.id)
             }
         }
 
         case ADD_CHECKBOX: {
             return {
+                ...state,
                 items : state.items.map(n => n.id === action.payload.item
             ? {
                     ...n,
@@ -48,6 +53,7 @@ const todoReducer = (state = initialState, action) => {
 
         case CHECKED_POST: {
             return {
+                ...state,
                 items: state.items.map(n => n.id === action.payload.item
                 ? { ...n,
                         checkboxes: n.checkboxes.map(m => m.id === action.payload.id
@@ -61,6 +67,7 @@ const todoReducer = (state = initialState, action) => {
 
         case DELETE_CHECKBOX: {
             return {
+                ...state,
                 items: state.items.map(n => n.id === action.payload.item
                     ? { ...n,
                         checkboxes: n.checkboxes.filter(n => n.id !== action.payload.id)
@@ -71,6 +78,7 @@ const todoReducer = (state = initialState, action) => {
 
         case UPDATE_HEADING: {
             return {
+                ...state,
                 items: state.items.map(n => n.id === action.payload.id
                     ? {...n, heading: action.payload.heading}
                     : n
@@ -78,16 +86,24 @@ const todoReducer = (state = initialState, action) => {
             }
         }
 
+        case CHANGE_COLOR: {
+            return {
+                ...state,
+                darkColor: !state.darkColor
+            }
+        }
+
         default:
             return state
     }
-}
+};
 
-export const addCheckBox = (item, newCheckboxText) => (dispatch) => dispatch({type: ADD_CHECKBOX, payload: {item, newCheckboxText}})
-export const checkedPost = (item, id) => (dispatch) => dispatch({type: CHECKED_POST, payload: {item, id}})
-export const deleteCheck = (item, id) => (dispatch) => dispatch({type: DELETE_CHECKBOX, payload: {item, id}})
-export const updateHeading = (heading, id) => (dispatch) => dispatch({type: UPDATE_HEADING, payload: {heading, id}})
-export const addItem = () => (dispatch) => dispatch({type: ADD_ITEM})
-export const deleteItem = (id) => (dispatch) => dispatch({type: DELETE_ITEM, id})
+export const addCheckBox = (item, newCheckboxText) => (dispatch) => dispatch({type: ADD_CHECKBOX, payload: {item, newCheckboxText}});
+export const checkedPost = (item, id) => (dispatch) => dispatch({type: CHECKED_POST, payload: {item, id}});
+export const deleteCheck = (item, id) => (dispatch) => dispatch({type: DELETE_CHECKBOX, payload: {item, id}});
+export const updateHeading = (heading, id) => (dispatch) => dispatch({type: UPDATE_HEADING, payload: {heading, id}});
+export const addItem = () => (dispatch) => dispatch({type: ADD_ITEM});
+export const deleteItem = (id) => (dispatch) => dispatch({type: DELETE_ITEM, id});
+export const changeColor = () => (dispatch) => dispatch({type: CHANGE_COLOR})
 
 export default todoReducer

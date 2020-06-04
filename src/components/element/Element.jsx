@@ -11,22 +11,22 @@ class Element extends React.Component {
     state = {
         editHeading: false,
         heading: this.props.item.heading
-    }
+    };
 
     activateEditHeading = () => {
         this.setState({
             editHeading: true
         });
-    }
+    };
 
     deactivateEditHeading = () => {
         this.setState({
             editHeading: false
         });
         this.props.updateHeading(this.state.heading, this.props.item.id);
-    }
+    };
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
 
         if (prevProps.item.heading !== this.props.item.heading) {
             this.setState({
@@ -39,33 +39,35 @@ class Element extends React.Component {
         this.setState({
             heading: e.currentTarget.value
         });
-    }
+    };
 
     addNewCheckbox = (values) => {
         this.props.addCheckBox(this.props.item.id, values.newCheckboxText)
-    }
+    };
 
     checkedNewPost = (id) => {
         this.props.checkedPost(this.props.item.id, id)
-    }
+    };
 
     deleteThisCheck = (id) => {
         this.props.deleteCheck(this.props.item.id, id)
-    }
+    };
 
     deleteElem = (id) => {
         this.props.deleteItem(id)
-    }
+    };
 
     render() {
 
-        let ElementReduxForm = reduxForm({form: `form_${this.props.item.id}`})(ElementForm)
+        let ElementReduxForm = reduxForm({form: `form_${this.props.item.id}`})(ElementForm);
 
-        const { id, heading, checkboxes } = this.props.item
+        const { id, heading, checkboxes } = this.props.item;
 
         return (
-            <div className={s.item}>
-                <div className={s.delete} onClick={() => this.deleteElem(id)}><DeleteImage/></div>
+            <div className={`${s.item} ${(this.props.darkColor
+                                                        ? s.darkElem
+                                                        : null)}`}>
+                <div className={s.delete} onClick={() => this.deleteElem(id)}><DeleteImage dark={this.props.darkColor}/></div>
                 {!this.state.editHeading &&
                     <h2 onDoubleClick={ this.activateEditHeading}>{heading}</h2>
                 }
@@ -83,11 +85,17 @@ class Element extends React.Component {
                                   checkedNewPost={this.checkedNewPost}
                                   checkboxes={checkboxes}
                                   onSubmit={ this.addNewCheckbox }
-                                  itemId={this.props.item.id}/>
+                                  itemId={this.props.item.id}
+                                  dark={this.props.darkColor} />
             </div>
         )
     }
 }
 
+const mapStateToProps = (state) => ({
+    darkColor: state.todo.darkColor
+})
 
-export default connect(null,{addCheckBox, checkedPost, deleteCheck, updateHeading, deleteItem})(Element)
+
+
+export default connect(mapStateToProps, {addCheckBox, checkedPost, deleteCheck, updateHeading, deleteItem})(Element)

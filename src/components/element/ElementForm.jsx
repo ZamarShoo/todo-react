@@ -21,7 +21,7 @@ const ElementForm = (props) => {
                                 { c.message }
                             </label>
                             <div className={s.checkBox_delete} onClick={() => props.deleteThisCheck(c.id)}>
-                                <DeleteImage/>
+                                <DeleteImage dark={props.dark}/>
                             </div>
                         </div>
                     )
