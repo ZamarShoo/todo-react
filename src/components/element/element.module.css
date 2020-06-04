@@ -156,6 +156,15 @@ textarea {
     border-color: #333;
 }
 
+.error {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    color: tomato;
+    position: absolute;
+    right: 19px;
+    bottom: 40px;
+}
+
 .darkElem h2:hover {
     background-color: #333;
 }

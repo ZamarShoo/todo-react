@@ -23,7 +23,11 @@ class Element extends React.Component {
         this.setState({
             editHeading: false
         });
-        this.props.updateHeading(this.state.heading, this.props.item.id);
+        let headText = this.state.heading
+        if (headText.length === 0) {
+            headText = 'This input is required'
+        }
+        this.props.updateHeading(headText, this.props.item.id);
     };
 
     componentDidUpdate(prevProps) {

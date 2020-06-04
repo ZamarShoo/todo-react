@@ -2,6 +2,8 @@ import s from "./element.module.css";
 import {Field} from "redux-form";
 import DeleteImage from "../../common/delete";
 import React from "react";
+import {required} from "../utils/validators";
+import {Textarea} from "../../common/FormControls";
 
 const ElementForm = (props) => {
 
@@ -28,9 +30,10 @@ const ElementForm = (props) => {
                 })
             }
             <div className={s.textareaDiv} autoFocus={true}>
-                <Field component='textarea'
+                <Field component={Textarea}
                        placeholder='Enter what are you need to do'
-                       name='newCheckboxText' />
+                       name='newCheckboxText'
+                       validate={[required]} />
                 <button className={s.textareaButton}>Send</button>
             </div>
         </form>
