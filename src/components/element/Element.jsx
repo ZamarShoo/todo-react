@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {reduxForm} from "redux-form";
 import {addCheckBox, checkedPost, deleteCheck, deleteItem, updateHeading} from "../../redux/todo-reducer";
 import {connect} from "react-redux";
@@ -7,93 +7,77 @@ import DeleteImage from "../../common/delete";
 import ElementForm from "./ElementForm";
 
 
-class Element extends React.Component {
-    state = {
-        editHeading: false,
-        heading: this.props.item.heading
+const Element = (props) => {
+    const [editHeading, setEditHeading] = useState(false)
+    const [headingState, setHeading] = useState(props.item.heading)
+
+    const activateEditHeading = () => {
+        setEditHeading(true)
     };
 
-    activateEditHeading = () => {
-        this.setState({
-            editHeading: true
-        });
-    };
-
-    deactivateEditHeading = () => {
-        this.setState({
-            editHeading: false
-        });
-        let headText = this.state.heading
+    const deactivateEditHeading = () => {
+        setEditHeading(false)
+        let headText = headingState
         if (headText.length === 0) {
             headText = 'This input is required'
         }
-        this.props.updateHeading(headText, this.props.item.id);
+        props.updateHeading(headText, props.item.id);
     };
 
-    componentDidUpdate(prevProps) {
+    useEffect( () => {
+        setHeading(props.item.heading);
+    }, [props.item.heading] );
 
-        if (prevProps.item.heading !== this.props.item.heading) {
-            this.setState({
-                heading: this.props.item.heading
-            });
-        }
-    }
-
-    onStatusChange = (e) => {
-        this.setState({
-            heading: e.currentTarget.value
-        });
+    const onStatusChange = (e) => {
+        setHeading(e.currentTarget.value)
     };
 
-    addNewCheckbox = (values) => {
-        this.props.addCheckBox(this.props.item.id, values.newCheckboxText)
+    const addNewCheckbox = (values) => {
+        props.addCheckBox(props.item.id, values.newCheckboxText)
     };
 
-    checkedNewPost = (id) => {
-        this.props.checkedPost(this.props.item.id, id)
+    const checkedNewPost = (id) => {
+        props.checkedPost(props.item.id, id)
     };
 
-    deleteThisCheck = (id) => {
-        this.props.deleteCheck(this.props.item.id, id)
+    const deleteThisCheck = (id) => {
+        props.deleteCheck(props.item.id, id)
     };
 
-    deleteElem = (id) => {
-        this.props.deleteItem(id)
+    const deleteElem = (id) => {
+        props.deleteItem(id)
     };
 
-    render() {
 
-        let ElementReduxForm = reduxForm({form: `form_${this.props.item.id}`})(ElementForm);
+    let ElementReduxForm = reduxForm({form: `form_${props.item.id}`})(ElementForm);
 
-        const { id, heading, checkboxes } = this.props.item;
-
-        return (
-            <div className={`${s.item} ${(this.props.darkColor
+    return (
+            <div className={`${s.item} ${(props.darkColor
                                                         ? s.darkElem
                                                         : null)}`}>
-                <div className={s.delete} onClick={() => this.deleteElem(id)}><DeleteImage dark={this.props.darkColor}/></div>
-                {!this.state.editHeading &&
-                    <h2 onDoubleClick={ this.activateEditHeading}>{heading}</h2>
+                <div className={s.delete} onClick={() => deleteElem(props.item.id)}><DeleteImage dark={props.darkColor}/></div>
+                {!editHeading &&
+                    <h2 onDoubleClick={activateEditHeading}>{props.item.heading}</h2>
                 }
-                {this.state.editHeading &&
+                {editHeading &&
                     <div>
-                        <input onChange={this.onStatusChange}
+                        <input onChange={onStatusChange}
                                autoFocus={true}
-                               onBlur={this.deactivateEditHeading}
-                               value={this.state.heading}
-                        type={'text'}/>
+                               onBlur={deactivateEditHeading}
+                               value={headingState}
+                               type={'text'} />
                     </div>
                 }
                 <hr />
-                <ElementReduxForm deleteThisCheck={this.deleteThisCheck}
-                                  checkedNewPost={this.checkedNewPost}
-                                  checkboxes={checkboxes}
-                                  onSubmit={ this.addNewCheckbox }
-                                  itemId={this.props.item.id}
-                                  dark={this.props.darkColor} />
+                <ElementReduxForm deleteThisCheck={deleteThisCheck}
+                                  checkedNewPost={checkedNewPost}
+                                  checkboxes={props.item.checkboxes}
+                                  onSubmit={ addNewCheckbox }
+                                  itemId={props.item.id}
+                                  dark={props.darkColor} />
             </div>
-        )
-    }
+    )
+
 }
 
 const mapStateToProps = (state) => ({
