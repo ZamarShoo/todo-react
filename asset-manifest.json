@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-todo/static/css/main.c92f0ce6.chunk.css",
+    "main.js": "/react-todo/static/js/main.9d38228b.chunk.js",
+    "main.js.map": "/react-todo/static/js/main.9d38228b.chunk.js.map",
+    "runtime-main.js": "/react-todo/static/js/runtime-main.b2438576.js",
+    "runtime-main.js.map": "/react-todo/static/js/runtime-main.b2438576.js.map",
+    "static/js/2.7350ac3a.chunk.js": "/react-todo/static/js/2.7350ac3a.chunk.js",
+    "static/js/2.7350ac3a.chunk.js.map": "/react-todo/static/js/2.7350ac3a.chunk.js.map",
+    "index.html": "/react-todo/index.html",
+    "precache-manifest.bf9be8c48c5a62d45bcbce71fe6d5e12.js": "/react-todo/precache-manifest.bf9be8c48c5a62d45bcbce71fe6d5e12.js",
+    "service-worker.js": "/react-todo/service-worker.js",
+    "static/css/main.c92f0ce6.chunk.css.map": "/react-todo/static/css/main.c92f0ce6.chunk.css.map",
+    "static/js/2.7350ac3a.chunk.js.LICENSE.txt": "/react-todo/static/js/2.7350ac3a.chunk.js.LICENSE.txt",
+    "static/media/delete-icon-dark.svg": "/react-todo/static/media/delete-icon-dark.38452350.svg",
+    "static/media/delete-icon.svg": "/react-todo/static/media/delete-icon.53935243.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b2438576.js",
+    "static/js/2.7350ac3a.chunk.js",
+    "static/css/main.c92f0ce6.chunk.css",
+    "static/js/main.9d38228b.chunk.js"
+  ]
+}
