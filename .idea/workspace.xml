@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91af1874-33c5-44d6-8514-ae5a6a4883fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/common/FormControls.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/todo-reducer.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/element/Element.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/element/Element.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/element/ElementForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/element/ElementForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/element/element.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/element/element.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/utils/validators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utils/validators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/todo-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/todo-reducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +24,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
@@ -47,7 +47,73 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.npm start">
+  <component name="RunManager" selected="Jest.todo actions.active will change">
+    <configuration name="length of checkbox not change" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/redux/todo-reducer.test.js" />
+      <test-names>
+        <test-name value="length of checkbox not change" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="length of checkbox should be -1" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/redux/todo-reducer.test.js" />
+      <test-names>
+        <test-name value="length of checkbox should be -1" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="length of checkbox should be incremented" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/redux/todo-reducer.test.js" />
+      <test-names>
+        <test-name value="length of checkbox should be incremented" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="todo actions" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/redux/todo-reducer.test.js" />
+      <test-names>
+        <test-name value="todo actions" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="todo actions.active will change" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/redux/todo-reducer.test.js" />
+      <test-names>
+        <test-name value="todo actions" />
+        <test-name value="active will change" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -61,6 +127,15 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.todo actions.active will change" />
+        <item itemvalue="Jest.todo actions" />
+        <item itemvalue="Jest.length of checkbox not change" />
+        <item itemvalue="Jest.length of checkbox should be -1" />
+        <item itemvalue="Jest.length of checkbox should be incremented" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -83,6 +158,8 @@
       <workItem from="1591202003165" duration="1004000" />
       <workItem from="1591268799546" duration="6600000" />
       <workItem from="1591278549731" duration="1491000" />
+      <workItem from="1591473891049" duration="5014000" />
+      <workItem from="1591529709747" duration="2362000" />
     </task>
     <servers />
   </component>

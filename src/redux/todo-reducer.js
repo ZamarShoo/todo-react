@@ -98,12 +98,12 @@ const todoReducer = (state = initialState, action) => {
     }
 };
 
-export const addCheckBox = (item, newCheckboxText) => (dispatch) => dispatch({type: ADD_CHECKBOX, payload: {item, newCheckboxText}});
-export const checkedPost = (item, id) => (dispatch) => dispatch({type: CHECKED_POST, payload: {item, id}});
-export const deleteCheck = (item, id) => (dispatch) => dispatch({type: DELETE_CHECKBOX, payload: {item, id}});
-export const updateHeading = (heading, id) => (dispatch) => dispatch({type: UPDATE_HEADING, payload: {heading, id}});
-export const addItem = () => (dispatch) => dispatch({type: ADD_ITEM});
-export const deleteItem = (id) => (dispatch) => dispatch({type: DELETE_ITEM, id});
-export const changeColor = () => (dispatch) => dispatch({type: CHANGE_COLOR})
+export const addCheckBox = (item, newCheckboxText) => ({type: ADD_CHECKBOX, payload: {item, newCheckboxText}});
+export const checkedPost = (item, id) => ({type: CHECKED_POST, payload: {item, id}});
+export const deleteCheck = (item, id) => ({type: DELETE_CHECKBOX, payload: {item, id}});
+export const updateHeading = (heading, id) => ({type: UPDATE_HEADING, payload: {heading, id}});
+export const addItem = () => ({type: ADD_ITEM});
+export const deleteItem = (id) => ({type: DELETE_ITEM, id});
+export const changeColor = () => ({type: CHANGE_COLOR})
 
 export default todoReducer
