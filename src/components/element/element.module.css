@@ -186,3 +186,14 @@ textarea {
 .darkElem label:hover {
     background-color: #333;
 }
+
+@media screen and (max-width: 750px) {
+    .wrapper {
+        width: 100vw;
+    }
+
+    .item {
+        width: 100%;
+        margin: 25px 15px;
+    }
+}
