@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="91af1874-33c5-44d6-8514-ae5a6a4883fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WrapperForElements/WrapperForElements.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WrapperForElements/WrapperForElements.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/element/element.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/element/element.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/todo-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/todo-reducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -159,6 +160,7 @@
       <workItem from="1591473891049" duration="5014000" />
       <workItem from="1591529709747" duration="2362000" />
       <workItem from="1591704238205" duration="1299000" />
+      <workItem from="1591802358614" duration="4455000" />
     </task>
     <servers />
   </component>

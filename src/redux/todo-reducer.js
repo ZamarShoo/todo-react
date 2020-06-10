@@ -25,7 +25,7 @@ const todoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 items: [...state.items,
-                    { id: state.items.length, heading: 'New Item', checkboxes: [] }]
+                    { id: state.items.length === 0 ? 0 : state.items[state.items.length - 1].id + 1, heading: 'New Item', checkboxes: [] }]
             }
         }
 
@@ -44,7 +44,7 @@ const todoReducer = (state = initialState, action) => {
                     ...n,
                     checkboxes: [...n.checkboxes,
                         {
-                            id: n.checkboxes.length, message: action.payload.newCheckboxText, active: false
+                            id: state.items[n.id].checkboxes.length === 0 ? 0 : n.checkboxes[state.items[n.id].checkboxes.length - 1].id + 1, message: action.payload.newCheckboxText, active: false
                         }]
                 }
             : n)
