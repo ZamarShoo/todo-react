@@ -7,6 +7,8 @@ This is my first react and redux application. In my project I use:
 * redux-form
 * jest
 
+https://zamarshoo.github.io/todo-react/
+
 ## What is my application?
 This is the todo list, there you can create a new item with checkboxes, change heading of item, delete checkbox and item, change color of all application
 
